@@ -5,7 +5,12 @@
             <hr>
             <div class="">
                 <p class="m-4 ">{{ $project[0]->description }}</p>
-                <button class="col-span-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded p- m-4 p-4">Mark as completed</button>
+                <form action="/projects/{{ $project[0]->slug }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    {{-- <input name="_method" type="hidden" value="PUT"> --}}
+                    <input type="submit" name="completed" value="Mark as completed" class="col-span-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded p- m-4 p-4">
+                </form>
             </div>
             @foreach ($tasks as $task)
 

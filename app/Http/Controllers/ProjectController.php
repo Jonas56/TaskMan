@@ -26,19 +26,20 @@ class ProjectController extends Controller
 
     public function show($slug)
     {
-
-        // $project = Projects::where('slug', $slug)->get();
-        // $tasks = Tasks::where([
-        //     ['projects_id', "=", $project[0]->id],
-        //     ['is_completed', "=", 1],
-        // ])->get();
-
         $tasks = Tasks::activeTasks($slug)->get();
-
         return view('tasks', [
             'tasks' => $tasks,
             'project' => Projects::where('slug', $slug)->get(),
         ]
         );
     }
+
+    public function markAsCompleted($slug)
+    {
+        $project = Projects::where('slug', $slug)->get();
+        $project[0]->is_completed = true;
+        $project[0]->update();
+        return redirect('/');
+    }
+
 }

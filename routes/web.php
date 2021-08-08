@@ -19,6 +19,7 @@ Route::get('/', [ProjectController::class, 'index']);
 
 // Tasks page
 Route::get('projects/{slug}', [ProjectController::class, 'show']);
+Route::put('projects/{slug}', [ProjectController::class, 'markAsCompleted']);
 
 // Create new Project Page
 Route::get('create-project', function () {
