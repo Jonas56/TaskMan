@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+// Projects page
 Route::get('/', function () {
-    return view('home');
+    return view('projects');
+});
+
+// Tasks page
+Route::get('project/tasks', function () {
+    return view('tasks');
+});
+
+// Create new Project Page
+Route::get('create-project', function () {
+    return view('create-project');
 });
