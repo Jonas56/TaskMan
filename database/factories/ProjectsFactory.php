@@ -23,6 +23,7 @@ class ProjectsFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
+            'slug' => $this->faker->slug,
             'description' => $this->faker->sentence,
             'is_completed' => $this->faker->boolean,
         ];
