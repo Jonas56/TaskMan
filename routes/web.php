@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 // Projects page
 Route::get('/', [ProjectController::class, 'index']);
 
-// Tasks page
+// Project Tasks page
 Route::get('projects/{slug}', [ProjectController::class, 'show']);
 Route::put('projects/{slug}', [ProjectController::class, 'markAsCompleted']);
+Route::post('projects/{slug}', [TaskController::class, 'create']);
 
 // Create new Project Page
 Route::get('create-project', function () {

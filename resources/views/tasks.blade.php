@@ -9,7 +9,7 @@
                     @csrf
                     @method('PUT')
                     {{-- <input name="_method" type="hidden" value="PUT"> --}}
-                    <input type="submit" name="completed" value="Mark as completed" class="col-span-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded p- m-4 p-4">
+                    <input type="submit" name="completed" value="Mark as completed" class="col-span-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded p- m-4 p-4 cursor-pointer">
                 </form>
             </div>
             @foreach ($tasks as $task)
@@ -20,10 +20,16 @@
             </div>
 
             @endforeach
-            <div class="mb-6 grid grid-cols-6 bg-white border border-white rounded-xl p-4">
-                <input type="text" name="task" class=" text-xl col-span-5 border border-gray-300 m-2">
-                <button class="col-span-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Task</button>
-            </div>
+            <form action="/projects/{{ $project[0]->slug }}" method="POST">
+                @csrf
+                <div class="mb-6 grid grid-cols-6 bg-white border border-white rounded-xl p-4">
+                    <input type="text" name="title" class="text-xl col-span-5 border border-gray-300 m-2">
+                    <input class="col-span-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer" value="Add Task" name="createTask" type="submit">
+                    @error('title')
+                        <span class="text-red-600 text-xs col-span-5">{{ $message }}*</span>
+                    @enderror
+                </div>
+            </form>
         </main>
     </section>
 </x-layout>

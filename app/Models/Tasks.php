@@ -10,6 +10,8 @@ class Tasks extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'slug', 'projects_id'];
+
     /**
      * Get the projects that owns the Tasks
      *
