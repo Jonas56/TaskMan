@@ -20,4 +20,13 @@ class Tasks extends Model
         return $this->belongsTo(Projects::class);
     }
 
+    public function scopeActiveTasks($query, $slug)
+    {
+        $project = Projects::where('slug', $slug)->get();
+        return $query->where([
+            ['projects_id', "=", $project[0]->id],
+            ['is_completed', "=", 0],
+        ]);
+    }
+
 }

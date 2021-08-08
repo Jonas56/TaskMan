@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +15,10 @@ use Illuminate\Support\Facades\Route;
  */
 
 // Projects page
-Route::get('/', function () {
-    return view('projects');
-});
+Route::get('/', [ProjectController::class, 'index']);
 
 // Tasks page
-Route::get('project/tasks', function () {
-    return view('tasks');
-});
+Route::get('projects/{slug}', [ProjectController::class, 'show']);
 
 // Create new Project Page
 Route::get('create-project', function () {
