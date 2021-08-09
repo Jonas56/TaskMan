@@ -25,6 +25,5 @@ Route::post('projects/{slug}', [TaskController::class, 'create']);
 Route::put('tasks/{slug}', [TaskController::class, 'delete']);
 
 // Create new Project Page
-Route::get('create-project', function () {
-    return view('create-project');
-});
+Route::get('create-project', fn() => view('create-project'));
+Route::post('create-project', [ProjectController::class, 'create']);

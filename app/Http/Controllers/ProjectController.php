@@ -42,4 +42,20 @@ class ProjectController extends Controller
         return redirect('/');
     }
 
+    public function create()
+    {
+        // validate user input
+        $attributes = request()->validate([
+            'name' => 'required|min:8',
+            'description' => 'required|min:10',
+        ]);
+
+        $project = Projects::create([
+            'name' => $attributes['name'],
+            'description' => $attributes['description'],
+        ]);
+
+        return redirect('/');
+    }
+
 }
