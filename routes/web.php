@@ -22,6 +22,7 @@ Route::get('/', [ProjectController::class, 'index']);
 Route::get('projects/{slug}', [ProjectController::class, 'show']);
 Route::put('projects/{slug}', [ProjectController::class, 'markAsCompleted']);
 Route::post('projects/{slug}', [TaskController::class, 'create']);
+Route::put('tasks/{slug}', [TaskController::class, 'delete']);
 
 // Create new Project Page
 Route::get('create-project', function () {

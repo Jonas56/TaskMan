@@ -26,4 +26,14 @@ class TaskController extends Controller
         return redirect("/projects/$slug");
 
     }
+
+    public function delete($slug)
+    {
+        $project = Tasks::where('slug', $slug)->get();
+        $my_project = Projects::where('id', $project[0]->projects_id)->get();
+
+        $task = Tasks::where('slug', $slug)->delete();
+
+        return redirect("/projects/" . $my_project[0]->slug);
+    }
 }

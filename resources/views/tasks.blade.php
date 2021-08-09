@@ -13,11 +13,15 @@
                 </form>
             </div>
             @foreach ($tasks as $task)
-
-            <div class="mb-6 grid grid-cols-6 bg-white border border-white rounded-xl p-4">
-                <h1 class="font-bold text-xl col-span-5"><a href="#">{{ $task->title }}</a></h1>
-                <button class="col-span-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded" >Mark as completed</button>
-            </div>
+            
+            <form action="/tasks/{{ $task->slug }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="mb-6 grid grid-cols-6 bg-white border border-white rounded-xl p-4">
+                    <h1 class="font-bold text-xl col-span-5"><a href="#">{{ $task->title }}</a></h1>
+                    <button class="col-span-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded" type="sumit" name="addTask">Mark as completed</button>
+                </div>
+            </form>
 
             @endforeach
             <form action="/projects/{{ $project[0]->slug }}" method="POST">
